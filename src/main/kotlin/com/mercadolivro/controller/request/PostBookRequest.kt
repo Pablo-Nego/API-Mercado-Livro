@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import javax.validation.constraints.NotEmpty
 import javax.validation.constraints.NotNull
 
-data class PostBookRequest(
+data class PostBookRequest (
 
         @field:NotEmpty(message = "Nome deve ser informado")
         var name: String,

@@ -19,8 +19,8 @@ import javax.validation.Valid
 @RestController
 @RequestMapping("books")
 class BookController(
-    private val bookService: BookService,
-    private val customerService: CustomerService
+        private val bookService: BookService,
+        private val customerService: CustomerService
 ) {
 
     @PostMapping
@@ -37,7 +37,7 @@ class BookController(
 
     @GetMapping("/active")
     fun findActives(@PageableDefault(page = 0, size = 10) pageable: Pageable): Page<BookResponse> =
-        bookService.findActives(pageable).map { it.toResponse() }
+            bookService.findActives(pageable).map { it.toResponse() }
 
     @GetMapping("/{id}")
     fun findById(@PathVariable id: Int): BookResponse {
@@ -55,6 +55,11 @@ class BookController(
     fun update(@PathVariable id: Int, @RequestBody book: PutBookRequest) {
         val bookSaved = bookService.findById(id)
         bookService.update(book.toBookModel(bookSaved))
+    }
+
+
+    fun soma(a: Int, b: Int): Int {
+        return a + b
     }
 
 }
