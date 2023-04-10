@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Nego3232@
+      MYSQL_DATABASE: mercadolivrodb
+      MYSQL_USER: mercadolivro
+      MYSQL_PASSWORD: mercadolivro
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/mercadolivrodb
+      DATABASE_USER: mercadolivro
+      DATABASE_PASSWORD: mercadolivro
